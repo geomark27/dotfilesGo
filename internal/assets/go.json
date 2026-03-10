@@ -1,6 +1,6 @@
 {
   "For Range": {
-    "prefix": ["forr", "range"],
+    "prefix": "range",
     "body": "for ${1:k}, ${2:v} := range ${3:collection} {\n\t$0\n}",
     "description": "for range loop"
   },
