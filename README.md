@@ -3,7 +3,7 @@
 > Instala snippets de Go en **Zed** y **VSCode** con un solo comando.
 
 ```bash
-go install github.com/geomark27/dotfilesGo@latest && dotfilesGo
+go install github.com/geomark27/dotfilesGo/cmd/dotfilesgo@latest && dotfilesgo
 ```
 
 ---
@@ -12,10 +12,10 @@ go install github.com/geomark27/dotfilesGo@latest && dotfilesGo
 
 ```bash
 # 1. Instalar
-go install github.com/geomark27/dotfilesGo@latest
+go install github.com/geomark27/dotfilesGo/cmd/dotfilesgo@latest
 
 # 2. Ejecutar
-dotfilesGo
+dotfilesgo
 ```
 
 ```
@@ -24,7 +24,24 @@ dotfilesGo
 2 editor(es) configurados.
 ```
 
-> En **Windows** detecta automáticamente las rutas de `APPDATA`.
+> En **Windows** y **WSL** detecta automáticamente las rutas de `APPDATA`.
+
+---
+
+## Comandos
+
+| Comando | Descripción |
+|---------|-------------|
+| `dotfilesgo` | Instala los snippets en todos los editores detectados |
+| `dotfilesgo --version` | Muestra la versión instalada |
+| `dotfilesgo --update` | Actualiza a la última versión disponible |
+
+Al instalar, el binario consulta automáticamente si hay una versión nueva y notifica al usuario:
+
+```
+⚡ Nueva versión disponible: v0.2.0 → v0.3.0
+   Actualiza con: dotfilesgo --update
+```
 
 ---
 
@@ -111,12 +128,7 @@ dotfilesGo
 
 ## Cómo funciona
 
-El binario usa `//go:embed` para empaquetar el JSON dentro del ejecutable — no necesita archivos externos ni conexión a internet después de instalarse.
-
-```go
-//go:embed snippets/go.json
-var snippets embed.FS
-```
+El binario usa `//go:embed` para empaquetar el JSON dentro del ejecutable — no necesita archivos externos ni conexión a internet después de instalarse. Detecta automáticamente el OS (Linux, macOS, Windows) y también si corre dentro de WSL.
 
 ---
 
