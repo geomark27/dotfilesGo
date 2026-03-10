@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	Module     = "github.com/geomark27/dotfilesGo"
+	Module     = "github.com/geomark27/dotfilesGo/cmd/dotfilesgo"
 	GithubRepo = "geomark27/dotfilesGo"
 )
 
