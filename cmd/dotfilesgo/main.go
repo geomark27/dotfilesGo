@@ -3,16 +3,25 @@ package main
 import (
 	"fmt"
 	"os"
+	"runtime/debug"
 
 	"github.com/geomark27/dotfilesGo/internal/assets"
 	"github.com/geomark27/dotfilesGo/internal/installer"
 	"github.com/geomark27/dotfilesGo/internal/updater"
 )
 
-// version se inyecta en build time: -ldflags "-X main.version=v0.2.0"
-var version = "dev"
+func getVersion() string {
+	if info, ok := debug.ReadBuildInfo(); ok {
+		if v := info.Main.Version; v != "" && v != "(devel)" {
+			return v
+		}
+	}
+	return "dev"
+}
 
 func main() {
+	version := getVersion()
+
 	if len(os.Args) > 1 {
 		switch os.Args[1] {
 		case "--update":
